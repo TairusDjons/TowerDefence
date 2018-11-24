@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour {
     public float fireRate;
     public float rotationSpeed;
 
+    public string shootTag;
     public int value;
     private GameObject currentTarget;
 
@@ -60,7 +61,7 @@ public class Tower : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" && currentTarget == null)
+        if (other.gameObject.CompareTag(shootTag) && currentTarget == null)
         {
             currentTarget = other.gameObject;
         }

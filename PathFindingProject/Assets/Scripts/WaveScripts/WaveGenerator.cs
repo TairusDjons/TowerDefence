@@ -20,9 +20,16 @@ public class WaveGenerator : MonoBehaviour
     private Queue<Wave> Q_waves;
     public UnityEngine.GameObject target;
 
+    private List<Unit> units;
+
+    public int WaveCount()
+    {
+        return Q_waves.Count;
+    }
 	// Use this for initialization
 	void Start () {
         Q_waves = new Queue<Wave>(waves);
+        units = new List<Unit>();
 	}
    
     // Update is called once per frame
@@ -37,15 +44,22 @@ public class WaveGenerator : MonoBehaviour
         if (currentWave != null)
             if (unitCounter > currentWave.units.Count-1)
             {
-                if (Q_waves.Count == 0 )
+                units.RemoveAll(unit => unit == null);
+                if (Q_waves.Count == 0)
                 {
-                    if (End != null)
+                    if (units.Count == 0)
+                    {
                         End();
-                    Destroy(this.gameObject);
-                }  
-                canSpawnEnemy = false;
-                currentWave = null;
-                StartCoroutine(WaveDelay());
+                        Destroy(this.gameObject);
+                    }
+                }
+                else
+                {
+                    canSpawnEnemy = false;
+                    currentWave = null;
+                    StartCoroutine(WaveDelay());
+                }
+                
             }
 
         if (canSpawnEnemy && currentWave != null)
@@ -69,6 +83,7 @@ public class WaveGenerator : MonoBehaviour
         
     }
 
+    
     void SpawnEnemy(UnitVector enemys)
     {
         if (repeatCounter < enemys.repeatCounter)
@@ -78,8 +93,8 @@ public class WaveGenerator : MonoBehaviour
                 var ai = unit.prefabUnit.GetComponent<UnitAI>();
                 ai.agent.Warp(unit.spawnPoint);
                 ai.Init(target);
-                Instantiate(unit.prefabUnit, this.transform.parent, false);
-
+                var enemy = Instantiate(unit.prefabUnit, this.transform.parent, false).GetComponent<Unit>();
+                units.Add(enemy);
             });
             StartCoroutine("EnemyDelay");
             repeatCounter++;

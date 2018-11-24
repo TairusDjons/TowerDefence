@@ -6,7 +6,7 @@ public class UnitCollisionIgnore : MonoBehaviour {
 
     // Use this for initialization
 
-    public Collider objectToIgnore;
+    public string IgnoreLayer;
 	void Start () {
 		
 	}
@@ -18,9 +18,9 @@ public class UnitCollisionIgnore : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.CompareTag(IgnoreLayer))
         {
-            Physics.IgnoreCollision(objectToIgnore, collision.gameObject.GetComponent<Collider>());
+            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
         }
     }
 }
