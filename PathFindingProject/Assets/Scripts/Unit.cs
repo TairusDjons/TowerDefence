@@ -15,7 +15,8 @@ public class Unit : MonoBehaviour, IDestroyable, IGetHittable
         get { return health; }
         set
         {
-            GetHit();
+            if (GetHit != null)
+                GetHit();
             if (value <= 0)
             {
                 Death();
@@ -28,6 +29,8 @@ public class Unit : MonoBehaviour, IDestroyable, IGetHittable
     public int damage;
   
     public float hitDelay;
+
+    public int value;
 
     bool isDelay = false;
   

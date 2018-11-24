@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    public UnityEngine.GameObject currentTower;
     public UnityEngine.GameObject castle;
     public WaveGenerator generator;
 
