@@ -7050,14 +7050,14 @@ MonoBehaviour:
     - units:
       - prefabUnit: {fileID: 1907502247717056, guid: 3b377aa20cd3bde48989785e40802eaf,
           type: 2}
-        spawnPoint: {x: 0, y: 0, z: 0}
+        spawnPoint: {x: 0, y: 0, z: 18}
       - prefabUnit: {fileID: 1000014975078228, guid: fda3cb7f915aebb49992970930084e8a,
           type: 2}
-        spawnPoint: {x: 0, y: 0, z: 0}
+        spawnPoint: {x: 18, y: 0, z: 0}
       - prefabUnit: {fileID: 1785151423341710, guid: 3952edcabc5b4f04ea31b7765fa5c1ef,
           type: 2}
-        spawnPoint: {x: 0, y: 0, z: 0}
-      repeatCounter: 2
+        spawnPoint: {x: 0, y: 0, z: -18}
+      repeatCounter: 3
     enemyDelay: 4
   - units:
     - units:

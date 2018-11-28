@@ -487,7 +487,7 @@ MonoBehaviour:
   bullet: {fileID: 114236767392658694, guid: 8db08509813260b42865c33f77983f3b, type: 2}
   tower: {fileID: 4712970392904602}
   shootPosition: {fileID: 4712970392904602}
-  fireRate: 3.5
+  fireRate: 2.6
   rotationSpeed: 10
   shootTag: Enemy
   value: 40
